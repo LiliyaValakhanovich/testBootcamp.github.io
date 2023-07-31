@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+}
+
+.conteiner {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  padding: 50px;
+  background-color: rgb(217, 213, 213);
+}
+.conteiner .closePagination {
+  width: 60px;
+  height: 30px;
+  position: fixed;
+  left: 90vw;
+  top: 2vh;
+}
+.conteiner .arrow-to-top {
+  position: fixed;
+  display: none;
+  z-index: 2;
+  left: 90vw;
+  top: 50vh;
+  font-size: 32px;
+}
+.conteiner .arrow-to-top .arrow {
+  width: 50px;
+  height: 50px;
+}
+.conteiner .arrow-to-up {
+  position: fixed;
+  z-index: 2;
+  left: 90vw;
+  top: 60vh;
+  font-size: 32px;
+}
+.conteiner .arrow-to-up .arrow-up {
+  width: 50px;
+  height: 50px;
+  transform: rotate(180deg);
+}
+.conteiner .wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}
+@media screen and (max-width: 768px) {
+  .conteiner .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+  }
+}
+@media screen and (max-width: 480px) {
+  .conteiner .wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 1fr;
+  }
+}
+.conteiner .wrapper .cardBox {
+  display: grid;
+  justify-content: center;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+.conteiner .wrapper .cardBox:hover {
+  transform: scale(1.08);
+  transition-duration: 1s;
+}
+.conteiner .wrapper .cardBox .cardImage {
+  height: 55%;
+  box-shadow: 0px 5px 15px 2px rgba(34, 60, 80, 0.5);
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .conteiner .wrapper .cardBox .cardImage {
+    width: 110px;
+    height: 110px;
+  }
+}
+.conteiner .wrapper .cardBox .cardImage .image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  border-radius: 5px;
+}
+.conteiner .wrapper .cardBox .cardBody {
+  display: grid;
+  justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .conteiner .wrapper .cardBox .cardBody .title {
+    font-size: 1em;
+  }
+}
+.conteiner .pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.conteiner .pagination .active {
+  background-color: #d4dd2c;
+}
+
+.loader {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(rgba(0, 0, 0, 0) 10%, #766DF4);
+  animation: s3 1s infinite linear;
+}
+@keyframes s3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #e0e0e0;
+  z-index: 3;
+}
+
+.loaded_hiding .preloader {
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+
+.loaded .preloader {
+  display: none;
+}
+
+.modal-box {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.modal-box .modal-window {
+  width: 50vw;
+  height: 50vh;
+  background-color: rgb(255, 255, 255);
+  border: 5px solid rgb(0, 0, 0);
+  display: flex;
+  position: fixed;
+  top: 25vh;
+  right: 25vw;
+  padding: 5px;
+}
+@media screen and (max-width: 1200px) {
+  .modal-box .modal-window {
+    width: 60vw;
+    height: 36vh;
+    top: 35vh;
+  }
+}
+.modal-box .modal-window .btn {
+  width: 30px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 90%;
+  right: 3%;
+}
+.modal-box .modal-window .btn:hover {
+  transform: scale(1.2);
+}
+.modal-box .modal-window .modal-image {
+  width: 50%;
+  height: 100%;
+}
+.modal-box .modal-window .modal-image .picture {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+@media screen and (max-width: 1200px) {
+  .modal-box .modal-window .modal-image {
+    width: 50%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .modal-box .modal-window .modal-image {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+  }
+}
+.modal-box .modal-window .modal-list {
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 5px;
+  position: absolute;
+  left: 50%;
+}
+@media screen and (max-width: 1200px) {
+  .modal-box .modal-window .modal-list {
+    font-size: 1.4em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .modal-box .modal-window .modal-list {
+    top: 5%;
+    left: 15%;
+  }
+}

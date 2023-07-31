@@ -1,0 +1,213 @@
+* {
+  box-sizing: border-box;
+}
+
+.conteiner{
+  position: relative;
+  display: grid;
+  justify-content: center;
+  padding: 50px;
+  background-color: rgb(217, 213, 213);
+  .closePagination {
+    width:60px;
+    height: 30px;
+    position: fixed;
+    left: 90vw;
+    top: 2vh;
+  }
+  .arrow-to-top {
+    position: fixed;
+    display: none;
+    z-index: 2 ;
+    left: 90vw;
+    top: 50vh;
+    font-size: 32px;
+    .arrow {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .arrow-to-up {
+    position: fixed;
+   
+    z-index: 2 ;
+    left: 90vw;
+    top: 60vh;
+    font-size: 32px; 
+    .arrow-up {
+      width: 50px;
+      height: 50px;
+      transform: rotate(180deg);
+    }
+  }
+  .wrapper{
+    width: 100% ;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap:40px;
+
+    @media screen and (max-width:768px){
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+    }
+    @media screen and (max-width:480px){
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: 1fr;
+    }
+    .cardBox{
+      display: grid;
+      justify-content: center;
+      position: relative;
+      background-color: rgb(255, 255, 255);
+      border-radius: 5px;
+      &:hover{
+        transform: scale(1.08);
+        transition-duration: 1s;
+      }
+      .cardImage{
+        height: 55%;
+        box-shadow: 0px 5px 15px 2px rgba(34, 60, 80, 0.5);
+        display: flex;
+        justify-content: center;
+
+        @media  screen and (max-width:1024px) {
+          width:110px;
+          height: 110px;
+        }
+        .image{
+          object-fit: cover;
+          height: 100%;
+          border-radius: 5px;
+        }
+      }
+      .cardBody{
+        display: grid;
+        justify-content: center;
+        .title{
+          @media screen and (max-width:1024px){
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    .active {
+      background-color:#d4dd2c;
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, #766DF4);
+  animation:s3 1s infinite linear;
+
+@keyframes s3 {to{transform: rotate(1turn)}}
+}
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #e0e0e0;
+  z-index: 3;
+}
+
+
+.loaded_hiding .preloader {
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+
+.loaded .preloader {
+  display: none;
+}
+
+.modal-box{
+  width:100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.7);
+  display:none;
+  position:fixed;
+  top:0;
+  right: 0;
+  .modal-window{
+    width: 50vw;
+    height: 50vh;
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(0, 0, 0);
+    display: flex;
+    position: fixed;
+    top:25vh;
+    right:25vw;
+    padding: 5px;
+    @media  screen and (max-width:1200px) {
+      width: 60vw;
+      height: 36vh;
+      top: 35vh;
+    }
+    .btn{
+      width:30px;
+      background-color: black;
+      color: white;
+      position:absolute;
+      top:90%;
+      right: 3%;
+      &:hover{
+        transform: scale(1.2);
+      }
+    }
+    .modal-image{
+      width:50%;
+      height:100%;
+      .picture{
+        object-fit: cover;
+        height: 100%;
+      }
+      @media  screen and (max-width:1200px) {
+        width: 50%;
+        height: 100%;
+      }
+      @media  screen and (max-width:768px) {
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+      }
+    }
+    .modal-list{
+      font-size: 1.5em;
+      list-style-type: none;
+      padding: 5px;
+      position:absolute;
+      left:50%;
+      @media  screen and (max-width:1200px) {
+        font-size: 1.4em;
+      }
+      @media  screen and (max-width:768px) {
+        top: 5%;
+        left:15%;
+      }
+    }
+  }
+}
+
+
+
+
+
+
