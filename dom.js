@@ -95,11 +95,6 @@ function createModalGender(hero){
   return createElement('span', ['word'], null, 'Gender: ', null, [nameItem], 'append');
 }
 
-function closeModalWindow(event){
-  document.querySelector('.modal-box').style.display='none';
-  document.body.style.overflow = 'visible';
-}
-
 function createElement(tag, classList, attributes, textContent, handlers, children, childrenAction){
   const element=document.createElement(tag);
 

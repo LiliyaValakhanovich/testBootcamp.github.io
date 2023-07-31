@@ -1,7 +1,6 @@
 let heroes=[];
 let cardId;
-let currentPage;
-let i=1;
+let i=1;/*page number*/
 let t;
 const cardElement=document.querySelector('.wrapper');
 const modalImage=document.querySelector('.modal-image');
@@ -22,6 +21,15 @@ const scrollButton=document.querySelector('.closePagination');
 closeButton.addEventListener('click', closeModalWindow);
 arrowToTop.addEventListener('click', goToTopPage);
 scrollButton.addEventListener('click', appearInfiniteScroll);
+
+fetch('https://rickandmortyapi.com/api/character')
+.then(res=>res.json())
+.then((data)=>{
+  heroes=data.results;
+  console.log(heroes);
+  addHeroToPage(heroes);
+  addButtonToPage();
+})
 
 function goToNextPage(event) {
   i=+(event.target.textContent);
@@ -50,32 +58,13 @@ function appearInfiniteScroll() {
     arrowToTop.style.display='block';
     const documentRect=document.documentElement.getBoundingClientRect();
     console.log(documentRect.bottom);
-    if(documentRect.bottom < document.documentElement.clientHeight + 150) {
+    if(documentRect.bottom < document.documentElement.clientHeight + 100) {
       loadingNewHero();
     } if (documentRect.top===0) {
       arrowToTop.style.display='none';
     }
   })
 }
-/*window.addEventListener('scroll', () => {
-  arrowToTop.style.display='block';
-  const documentRect=document.documentElement.getBoundingClientRect();
-  console.log(documentRect.bottom);
-  if(documentRect.bottom < document.documentElement.clientHeight + 150) {
-    loadingNewHero();
-  } if (documentRect.top===0) {
-    arrowToTop.style.display='none';
-  }
-})*/ 
-
-fetch('https://rickandmortyapi.com/api/character')
-.then(res=>res.json())
-.then((data)=>{
-  heroes=data.results;
-  console.log(heroes);
-  addHeroToPage(heroes);
-  addButtonToPage();
-})
 
 function addButtonToPage() {
   for(let j=1; j<43; j++) {
@@ -149,6 +138,11 @@ function addHeroToModal(heroes,cardId){
     }
     return;
   }) 
+}
+
+function closeModalWindow(event){
+  document.querySelector('.modal-box').style.display='none';
+  document.body.style.overflow = 'visible';
 }
 
 function loadingNewHero(){
